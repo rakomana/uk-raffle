@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="161px" height="161px" viewBox="0 0 161 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>lotto</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="lotto" transform="translate(-60.000000, -60.000000)">
+            <g transform="translate(60.000000, 60.000000)">
+                <circle id="Oval-Copy-52" fill="#f1c40f" opacity="0.100000001" cx="80.5" cy="80.5" r="80.5"></circle>
+                <g id="Group" transform="translate(46.078945, 32.148434)">
+                    <rect id="Rectangle-Copy-11" fill="#D09E00" transform="translate(40.723546, 48.351566) rotate(-75.000000) translate(-40.723546, -48.351566) " x="-0.572953737" y="17.7615658" width="82.593" height="61.18" rx="9.66"></rect>
+                    <rect id="Rectangle-Copy-11" fill="#f1c40f" transform="translate(32.702194, 48.351566) rotate(-450.000000) translate(-32.702194, -48.351566) " x="-8.59430605" y="17.7615658" width="82.593" height="61.18" rx="9.66"></rect>
+                    <g id="dots" transform="translate(7.225875, 20.563310)" fill="#FFFFFF">
+                        <rect id="Rectangle" transform="translate(4.063319, 4.040756) rotate(-360.000000) translate(-4.063319, -4.040756) " x="0.239568611" y="0.217006228" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-14" transform="translate(14.769819, 4.040756) rotate(-360.000000) translate(-14.769819, -4.040756) " x="10.9460686" y="0.217006228" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-16" transform="translate(25.476319, 4.040756) rotate(-360.000000) translate(-25.476319, -4.040756) " x="21.6525686" y="0.217006228" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-17" transform="translate(36.182819, 4.040756) rotate(-360.000000) translate(-36.182819, -4.040756) " x="32.3590686" y="0.217006228" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-18" transform="translate(46.889319, 4.040756) rotate(-360.000000) translate(-46.889319, -4.040756) " x="43.0655686" y="0.217006228" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle" transform="translate(4.063319, 16.276756) rotate(-360.000000) translate(-4.063319, -16.276756) " x="0.239568611" y="12.4530062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-14" transform="translate(14.769819, 16.276756) rotate(-360.000000) translate(-14.769819, -16.276756) " x="10.9460686" y="12.4530062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-16" transform="translate(25.476319, 16.276756) rotate(-360.000000) translate(-25.476319, -16.276756) " x="21.6525686" y="12.4530062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-17" transform="translate(36.182819, 16.276756) rotate(-360.000000) translate(-36.182819, -16.276756) " x="32.3590686" y="12.4530062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-18" transform="translate(46.889319, 16.276756) rotate(-360.000000) translate(-46.889319, -16.276756) " x="43.0655686" y="12.4530062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle" transform="translate(4.063319, 28.512756) rotate(-360.000000) translate(-4.063319, -28.512756) " x="0.239568611" y="24.6890062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-14" transform="translate(14.769819, 28.512756) rotate(-360.000000) translate(-14.769819, -28.512756) " x="10.9460686" y="24.6890062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-16" transform="translate(25.476319, 28.512756) rotate(-360.000000) translate(-25.476319, -28.512756) " x="21.6525686" y="24.6890062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-17" transform="translate(36.182819, 28.512756) rotate(-360.000000) translate(-36.182819, -28.512756) " x="32.3590686" y="24.6890062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                        <rect id="Rectangle-Copy-18" transform="translate(46.889319, 28.512756) rotate(-360.000000) translate(-46.889319, -28.512756) " x="43.0655686" y="24.6890062" width="7.6475" height="7.6475" rx="3.82375"></rect>
+                    </g>
+                    <text id="Lotto" fill="#D09E00" font-family="Poppins-ExtraBold, Poppins" font-size="12.88" font-weight="600">
+                        <tspan x="11.669154" y="75.7209164">LOTTUS</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
