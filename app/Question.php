@@ -23,7 +23,7 @@ class Question extends Model
     * @return hasMany
     *
     */
-    public function option()
+    public function options()
     {
     	return $this->hasMany(Option::class);
     }

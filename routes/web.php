@@ -32,6 +32,9 @@ Route::get('/play', function () {
     return view('play');
 });
 
+//authentication
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 Auth::routes();
 
 Route::get('/welcome', 'HomeController@index');

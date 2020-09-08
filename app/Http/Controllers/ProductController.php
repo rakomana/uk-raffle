@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Question;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $product;
+    private $question;
 
     public function __construct(
-        Product $product
+        Product $product,
+        Question $question
     )
     {
         $this->product = $product;
+        $this->question = $question;
     }
     /**
      * Display a listing of the resource.
@@ -41,8 +46,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->product->where('id', $id)->get();
+        $product = $this->product->where('id', $id)->get()->load('questions');
 
-        return view('product', compact('product'));
+        $question = $this->question->where('product_id', $id)->get()->load('options');
+        
+        return view('product', compact('product', 'question'));
     }
 }

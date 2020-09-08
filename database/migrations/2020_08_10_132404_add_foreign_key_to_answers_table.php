@@ -13,7 +13,7 @@ class AddForeignKeyToAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::table('answers', function (Blueprint $table) {
+        Schema::table('options', function (Blueprint $table) {
             $table->foreign('question_id')
                     ->references('id')
                     ->on('questions')

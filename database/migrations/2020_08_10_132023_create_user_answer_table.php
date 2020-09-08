@@ -14,13 +14,12 @@ class CreateUserAnswerTable extends Migration
     public function up()
     {
         Schema::create('user_answer', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-            $table->unsignedBigInteger('option_id')->nullable();
+            $table->integer('option_id')->unsigned()->nullable();
             $table->foreign('option_id')
                     ->references('id')
                     ->on('options')

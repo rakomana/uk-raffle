@@ -18,6 +18,7 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="{{asset('css/main.css')}}">
   <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+  <link rel="stylesheet" href="{{asset('css/auto.css')}}">
 </head>
 <body>
 
@@ -39,7 +40,7 @@
         <div class="col-lg-6">
           <ul class="header-left-list">
             <li><a href="tel:01118558887"><i class="fa fa-phone"></i>Support</a></li>
-            <li><a href="mailto:support@gmail.com"><i class="fa fa-envelope"></i>info@smartmortgages.com</a></li>
+            <li><a href="mailto:support@gmail.com"><i class="fa fa-envelope"></i>info@raffle.com</a></li>
           </ul>
         </div>
         <div class="col-lg-6">

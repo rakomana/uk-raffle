@@ -42,9 +42,9 @@ cursor: pointer;
 		<div class="card">
 			<div class="card-header"><h3>Sign In</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
+					<a href="{{url('login/facebook')}}"><span><i class="fab fa-facebook-square"></i></span></a>
+					<a href="{{url('login/google')}}"><span><i class="fab fa-google-plus-square"></i></span></a>
+					<a href="{{url('login/twitter')}}"><span><i class="fab fa-twitter-square"></i></span></a>
 				</div>
 			</div>
 			<div class="card-body">
