@@ -82,12 +82,12 @@ cursor: pointer;
                     <div class="d-flex justify-content-center">
 					<span style="color: white;">Don't have an account?</span>
 						<a href="{{Route('register')}}}">
-							<span style="color: blue;">Sign Up</span>
+							<span style="color: white;">Sign Up</span>
 						</a>
                     </div>
                     <div class="d-flex justify-content-center">
                         <a href="{{Route('password.request')}}">
-                        	<span style="color: blue;">Forgot your password?</a></span>
+                        	<span style="color: white;">Forgot your password?</a></span>
                     </div>
 			</div>
 		</div>

@@ -44,7 +44,7 @@
               @foreach($question as $question)
                 <option></option>
                 @foreach($question->options as $question)
-                  <option>{{$question->option}}</option>
+                  <option value="{{$question->option}}">{{$question->option}}</option>
                 @endforeach
               @endforeach
             </select>
@@ -55,7 +55,7 @@
               </span>
             @enderror
             <br>
-            <input type="number" v-model="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror" placeholder="please enter total number of tickets">
+            <input type="number" min="0" max="{{$product['no_of_tickets']}}" v-model="quantity" name="quantity" class="form-control @error('quantity') is-invalid @enderror" placeholder="please enter total number of tickets">
 
             @error('quantity')
                 <span style="color: red;" class="invalid-feedback" role="alert">
@@ -65,6 +65,7 @@
             <input type="hidden" name="product_id" value="{{$product['id']}}">
           </div>
           <label>Total Amount : <span>£</span>@{{totalAmount}}</label>
+          <input type="hidden" name="total_amount" value="@{{totalAmount}}">
           <div style="padding-top: 10px;">
                 <button type="submit" class="cmn-btn">Play</button>
            </div>

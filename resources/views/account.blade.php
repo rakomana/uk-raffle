@@ -2,9 +2,34 @@
 
 @section('content')
 
+<style>
+  table {
+    font-family: arial, sans-serif;
+    width: 100%;
+    color: #dddddd;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(whole) {
+    background-color: #dddddd;
+  }
+  </style>
+
   <!-- inner-hero-section start -->
   <section style="height: 350px;" class="inner-hero-section bg_img" data-background="assets/images/bg-img/inner-hero.jpg">
     <div class="container">
+      @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li style="color: black;">{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                  @endif
       <div class="row">
         <div class="col-lg-12" style="text-align: center;">
           <img style="border-radius: 50%;" src="images/picture.jpg">
@@ -32,10 +57,7 @@
                 <a class="nav-link" id="ticket-tab" data-toggle="pill" href="#ticket" role="tab" aria-controls="ticket" aria-selected="false">Billings</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="wining-tab" data-toggle="pill" href="#wining" role="tab" aria-controls="wining" aria-selected="false">Winnings</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="result-tab" data-toggle="pill" href="#result" role="tab" aria-controls="result" aria-selected="false">Results</a>
+                <a class="nav-link" id="wining-tab" data-toggle="pill" href="#wining" role="tab" aria-controls="wining" aria-selected="false">Orders</a>
               </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -223,12 +245,6 @@
                       <div class="col-lg-4">
                         <button type="submit" class="cmn-btn">Save</button>
                       </div>
-                      <div class="col-lg-4">
-                        <button type="submit" class="cmn-btn">Paypal</button>
-                      </div>
-                      <div class="col-lg-4">
-                        <button type="submit" class="cmn-btn">Bitcoin</button>
-                      </div>
                     </div>
                   </form>
                 </div><!-- faq-item end -->
@@ -238,70 +254,50 @@
                   <h4 class="title">Competition Details </h4>
                   <form class="contact-form">
                     <div class="form-row">
-                    @foreach($competition as $compete)
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Product : </label> 
-                      </div> 
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">{{$compete->name}}</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Amount :</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">€{{$compete->entry_price}}</label> 
-                      </div>                      
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Tickets :</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">{{$compete->no_of_tickets}}</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Question : Maximum operating voltage for fridge</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">250V</label> 
-                      </div>
-                      @endforeach
-                      <div>{{$competition->links()}}</div>
-                      <div style="padding-top: 10px;" class="col-lg-12">
-                        <button type="submit" class="cmn-btn">Save</button>
-                      </div>
-                    </div>
-                  </form>
-                </div><!-- faq-item end -->
-              </div>
-              <div class="tab-pane fade" id="result" role="tabpanel" aria-labelledby="result-tab">
-                <div class="faq-item">
-                  <h4 class="title">Competition Results </h4>
-                  <form class="contact-form">
-                    <div class="form-row">
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Product :</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Fridge</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Winners :</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">15</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">Question : Maximum operating voltage for fridge</label> 
-                      </div>
-                      <div class="form-group col-lg-6">
-                        <label id="contact-name">250V</label> 
-                      </div>
-                      <div class="col-lg-12">
-                        <button type="submit" class="cmn-btn">Save</button>
-                      </div>
-                    </div>
-                  </form>
-                </div><!-- faq-item end -->
+                      <table>
+                        <tr class="custom">
+                          <th>Product</th>
+                          <th>Image</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Total Amount</th>
+                          <th>Closing Date</th>
+                          <th>Win</th>
+                        </tr>
+                        @foreach($competition as $compete)
+                        <tr>
+                          <td>{{$compete->name}}</td>
+                          <td><img style="width: 100; height: 100;" src="{{asset('storage/'.$compete->image)}}"></td>
+                          <td>£{{$compete->entry_price}}</td>
+                          <td>{{$compete->pivot->quantity}}</td>
+                          <td>£<?php echo ($compete->entry_price * $compete->pivot->quantity);  ?></td>
+                          <td>{{$compete->closing_date}}</td>
+                          <td>
 
+                            <?php
+                              $date1 = date_create($compete->closing_date);
+                              $date2=date_create(date("Y-m-d"));
+                              if($date1 <= $date2)
+                              {
+                                if($compete->id == $products_user_won->id )
+                                {
+                                  echo "Won";
+                                }
+                                else {
+                                  echo "Lost";
+                                }
+                              }
+                              else {
+                                echo "Pending";
+                              }
+                            ?>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </table>
+                    </div>
+                  </form>
+                </div><!-- faq-item end -->
               </div>
             </div>
           </div>

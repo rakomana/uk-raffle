@@ -9,7 +9,7 @@
         <div class="col-lg-12">
           <h2 class="page-title">About Us</h2>
           <ol class="breadcum d-flex">
-            <li><a href="{{url('welcome')}}">Home</a></li>
+            <li><a href="{{url('/')}}">Home</a></li>
             <li>about us</li>
           </ol>
         </div>
@@ -27,13 +27,12 @@
             <div class="section-header">
               <h2 class="section-title">Story about us</h2>
             </div>
-            <p>The mortgage industry is constantly evolving from desktop valuations which can save weeks on your mortgage application, to open banking for income verification. Whatever the change we are commited to ensuring our customers benefit from these changes which is why not only do we offer a face to face service, we also offer telephone and face to face via webcam.</p>
-            <p>Using technology we can offer a fantastic nationwide service meaning no matter where you are, were here to help.
-              Get in touch using the buttons below and let one of our mortgage specialist call you to discuss your remortgage options.</p>
+            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil accusamus distinctio maiores, error voluptates ipsam quae, delectus debitis est cupiditate recusandae odit consectetur in natus rem voluptatibus ea minima quod!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea autem est blanditiis repellat sunt obcaecati nihil velit omnis assumenda ipsam vero consequuntur, ut pariatur distinctio iste rem totam temporibus ab?</p>
             <ul class="cmn-list">
-              <li>FACE TO FACE</li>
+              <li>EMAIL</li>
               <li>TELEPHONE</li>
-              <li>WEBCAM</li>
+              <li>CHAT</li>
             </ul>
           </div>
         </div>
@@ -54,7 +53,7 @@
         <div class="col-lg-8">
           <div class="section-header text-center">
             <h2 class="section-title">Users testimonial</h2>
-            <p>Tickets allows you to participate in the world’s biggest competitions. We give you the possibility of purchasing competition tickets in a safe and convenient manner from the comfort of your home. Let's see the competition players reveiws.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil, quisquam culpa sit quo sint facilis ipsa perspiciatis distinctio earum nesciunt animi, voluptatem possimus aut reprehenderit dolores consequuntur sapiente autem similique?</p>
           </div>
         </div>
       </div>
@@ -62,7 +61,7 @@
         <div class="testimonial-slider owl-carousel">
           <div class="testmonial-item">
             <div class="content">
-              <p>Online Ticket! Which is made more easier and fun by competitors. Would definitely recommend. One of the best online competition sites!</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit perspiciatis, ex ab hic accusantium delectus magni, ducimus laborum quas ullam facilis voluptas qui reiciendis in consequuntur quos quam sapiente distinctio.</p>
             </div>
             <div class="user-details">
               <div class="thumb"><img src="{{asset('images/testimonial/1.png')}}" alt="images"></div>
@@ -74,7 +73,7 @@
           </div><!-- testmonial-item end -->
           <div class="testmonial-item">
             <div class="content">
-              <p>Online competition! Which is made more easier and fun by competition. Would definitely recommend. One of the best online competition sites!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae minima repellendus est, harum vel! Aut veniam odio et rem, voluptatem nobis deserunt similique eaque consectetur provident expedita a corrupti.</p>
             </div>
             <div class="user-details">
               <div class="thumb"><img src="{{asset('images/testimonial/2.png')}}" alt="images"></div>
@@ -86,7 +85,7 @@
           </div><!-- testmonial-item end -->
           <div class="testmonial-item">
             <div class="content">
-              <p>Online competition! Which is made more easier and fun by competition. Would definitely recommend. One of the best online competition sites!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum deserunt hic molestias id enim nihil nobis nostrum explicabo. Nostrum obcaecati suscipit natus unde maxime commodi itaque excepturi incidunt distinctio rerum.</p>
             </div>
             <div class="user-details">
               <div class="thumb"><img src="{{asset('images/testimonial/1.png')}}" alt="images"></div>

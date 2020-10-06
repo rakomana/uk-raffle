@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Option;
 use App\Product;
 use App\Competition;
 use Illuminate\Http\Request;
@@ -50,7 +51,12 @@ class CompetitionController extends Controller
             return redirect()->back()->with('success', ' you already Entered the competition');
         }
 
+        // user enter competition on a specific item
         $user->product()->attach($request->product_id, ['quantity' => $request->quantity]);
+
+        // user 's lucky answer
+        $option = Option::where('option', $request->option)->firstOrFail();
+        $user->option()->attach($option);
 
         $this->db->commit();
 

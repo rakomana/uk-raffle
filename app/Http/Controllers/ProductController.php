@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Question;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +12,8 @@ class ProductController extends Controller
     private $product;
     private $question;
 
-    public function __construct(
+    public function __construct
+    (
         Product $product,
         Question $question
     )

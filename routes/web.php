@@ -22,12 +22,6 @@ Route::get('/about', function () {
 Route::get('/result', function () {
     return view('result');
 });
-Route::get('/winner', function () {
-    return view('winner');
-});
-Route::get('/history', function () {
-    return view('history');
-});
 Route::get('/play', function () {
     return view('play');
 });

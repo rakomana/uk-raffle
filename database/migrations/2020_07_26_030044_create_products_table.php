@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('no_of_tickets');
             $table->string('status')->default();
             $table->string('quantity');
+            $table->string('closing_date');
             $table->timestamps();
         });
     }

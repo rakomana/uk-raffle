@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Option;
+use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -40,9 +43,36 @@ class AccountController extends Controller
     {
     	//load all user relationships
         $user = $request->user()->load('billing');
-        $competition = $user->product()->paginate(1);
+        $competition = $user->product()->get();
 
-        return view('account', compact('user', 'competition'));
+        // get user option
+        $user_option = $user->option()->get(); 
+        
+        if($user_option->isEmpty())
+        {
+            return view('account', compact('user', 'competition'));
+        }
+
+        foreach($user_option as $user_option) 
+        {
+           $user_check_option = $user_option->pivot->option_id;
+        }
+        
+        // check if option is correct
+        $option = Option::where('id', $user_check_option)->firstOrFail();
+
+        if($option->correct)
+        {
+            //show which product the user has won
+            $product_user_won = $option->question()->get();
+
+            foreach ($product_user_won as $key => $value) {
+                //dispay the results after closing date
+                $products_user_won = Product::where('id', $value->product_id)->firstOrFail();
+            }
+        }
+        
+        return view('account', compact('user', 'competition', 'products_user_won'));
     }
 
     /**

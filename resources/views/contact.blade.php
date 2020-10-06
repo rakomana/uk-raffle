@@ -8,7 +8,7 @@
         <div class="col-lg-12">
           <h2 class="page-title">Contact Us</h2>
           <ol class="breadcum d-flex">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{{url('/')}}">Home</a></li>
             <li>Contact</li>
           </ol>
         </div>

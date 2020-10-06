@@ -9,7 +9,7 @@
         <div class="col-lg-12">
           <h2 class="page-title">Frequently ask questions</h2>
           <ol class="breadcum d-flex">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{{url('/')}}">Home</a></li>
             <li>Faq</li>
           </ol>
         </div>

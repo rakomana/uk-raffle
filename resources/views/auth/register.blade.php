@@ -104,7 +104,7 @@ cursor: pointer;
 			<div class="card-footer">
                     <div class="flex justify-content-center" style="color: white;">
 					    Already have an account?<a href="{{Route('login')}}}">
-					    	<span style="color: blue;">Sign In</span></a>
+					    	<span style="color: white;">Sign In</span></a>
                     </div>
 			</div>
 		</div>
