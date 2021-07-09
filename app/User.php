@@ -57,19 +57,16 @@ class User extends \TCG\Voyager\Models\User
     public function product()
     {
         return $this->belongsToMany(Product::class, 'user_product')
-                    ->withPivot('quantity')
+                    ->withPivot('order_id', 'quantity', 'status')
                     ->withTimestamps();
     }
 
     /**
-    * Options associated with the user
-    * @return belongsToMany
-    *
+     * account associated with user
+     * @return hasMany
     */
-    public function option()
+    public function account()
     {
-        return $this->belongsToMany(Option::class, 'user_options')->withTimestamps();
+        return $this->hasMany(Account::class);
     }
-
-
 }

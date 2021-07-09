@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use App\Question;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -12,14 +11,10 @@ class ProductController extends Controller
     private $product;
     private $question;
 
-    public function __construct
-    (
-        Product $product,
-        Question $question
-    )
-    {
+    public function __construct(
+        Product $product
+    ) {
         $this->product = $product;
-        $this->question = $question;
     }
     /**
      * Display a listing of the resource.
@@ -29,8 +24,24 @@ class ProductController extends Controller
     public function index()
     {
         $products = $this->product->all();
+        $count_active_products = 0;
 
-        return view('welcome', compact('products'));
+        //Count active products for the competition by checking the dates
+        foreach($products as $product)
+        {
+            $closing_date = new Carbon($product->closing_date);
+            $now = new Carbon();
+
+            if($closing_date->gte($now))
+            {
+                $count_active_products++;
+
+            }
+
+
+        }
+        //$count_active_products = $closing_date;
+        return view('welcome', compact('products', 'count_active_products'));
     }
 
     public function getActiveProducts()
@@ -48,10 +59,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->product->where('id', $id)->get()->load('questions');
+        //$product = $this->product->where('id', $id)->get()->load('questions');
+        $product = $this->product->where('id', $id)->get();
+        //$question = $this->question->where('product_id', $id)->get()->load('options');
 
-        $question = $this->question->where('product_id', $id)->get()->load('options');
-        
-        return view('product', compact('product', 'question'));
+        return view('product', compact('product'));
     }
 }

@@ -1,191 +1,206 @@
-(function($){
-  "user strict";
+(function ($) {
+ "use strict";
 
-  $(document).on('ready',function() {
-    // inline background image function call
-    background();
-  });
+/*--------------------------
+preloader
+---------------------------- */	
+	
+	$(window).on('load',function(){
+		var pre_loader = $('#preloader')
+	pre_loader.fadeOut('slow',function(){$(this).remove();});
+	});	
+    
+	
+/*---------------------
+ TOP Menu Stick
+--------------------- */
+	
+var windows = $(window);
+var sticky = $('#sticker');
 
-  $(window).on("load", function() {
-    //preloader
-    $(".loader").delay(300).animate({
-      "opacity" : "0"
-      }, 300, function() {
-      $(".loader").css("display","none");
+windows.on('scroll', function() {
+    var scroll = windows.scrollTop();
+    if (scroll < 300) {
+        sticky.removeClass('stick');
+    }else{
+        sticky.addClass('stick');
+    }
+});   
+    
+    
+/*----------------------------
+ jQuery MeanMenu
+------------------------------ */
+	
+    var mean_menu = $('nav#dropdown');
+    mean_menu.meanmenu();
+    
+/*---------------------
+ wow .js
+--------------------- */
+    function wowAnimation(){
+        new WOW({
+            offset: 100,          
+            mobile: true
+        }).init()
+    }
+    wowAnimation()	
+    
+/*--------------------------
+ scrollUp
+---------------------------- */
+	
+	$.scrollUp({
+		scrollText: '<i class="ti-arrow-up"></i>',
+		easingType: 'linear',
+		scrollSpeed: 900,
+		animation: 'fade'
+	});
+    
+	
+/*--------------------------
+ collapse
+---------------------------- */
+	
+	var panel_test = $('.panel-heading a');
+	panel_test.on('click', function(){
+		panel_test.removeClass('active');
+		$(this).addClass('active');
+	});
+
+/*--------------------------
+ MagnificPopup
+---------------------------- */	
+	
+    $('.video-play').magnificPopup({
+        type: 'iframe'
     });
-  });
 
-  // header search 
-  $(".header-serch-btn").on('click', function(){
-    if ($(this).hasClass('toggle-close')) {
-        $(this).removeClass('toggle-close').addClass('toggle-open');
-        $('.header-top-search-area').addClass('open');
-    }
-    else {
-        $(this).removeClass('toggle-open').addClass('toggle-close');
-        $('.header-top-search-area').removeClass('open');
-    }
-  });
-
-  // close search area when click off of container
-  $(document).on('click touchstart', function (e){
-    if (!$(e.target).is('.header-serch-btn, .header-serch-btn *, .header-top-search-area, .header-top-search-area *')) {
-      $('.header-top-search-area').removeClass('open');
-      $('.header-serch-btn').addClass('toggle-close');
-    }
-  });
-
-  // mobile menu js
-  $(".navbar-collapse>ul>li>a, .navbar-collapse ul.sub-menu>li>a").on("click", function() {
-    const element = $(this).parent("li");
-    if (element.hasClass("open")) {
-      element.removeClass("open");
-      element.find("li").removeClass("open");
-    }
-    else {
-      element.addClass("open");
-      element.siblings("li").removeClass("open");
-      element.siblings("li").find("li").removeClass("open");
-    }
-  });
-
-  //js code for menu toggle
-  $(".menu-toggle").on("click", function() {
-      $(this).toggleClass("is-active");
-  });
-  
-   // menu options custom affix
-   var fixed_top = $(".header-section");
-   $(window).on("scroll", function(){
-       if( $(window).scrollTop() > 50){  
-           fixed_top.addClass("animated fadeInDown menu-fixed");
-       }
-       else{
-           fixed_top.removeClass("animated fadeInDown menu-fixed");
-       }
-   });
- 
-
-  // header-top 
-  $('.header-top-open-btn').on('click', function(){
-    $('.header-top').addClass('open');
-  });
-
-  $('.header-top .close-btn').on('click', function(){
-    $('.header-top').removeClass('open');
-  });
-
-  // inline background image function
-  function background() {
-    var img =$('.bg_img');
-    img.css('background-image', function () {
-    var bg = ('url(' + $(this).data('background') + ')');
-    return bg;
+/*--------------------------
+     Project carousel
+---------------------------- */
+	var lottery_carousel = $('.lettery-carousel');
+	lottery_carousel.owlCarousel({
+        loop:true,
+        nav:true,		
+        autoplay:false,
+        dots:false,
+        navText: ["<i class='ti-angle-left'></i>","<i class='ti-angle-right'></i>"],
+        responsive:{
+            0:{
+                items:1
+            },
+            700:{
+                items:2
+            },
+            1000:{
+                items:3
+            }
+        }
     });
-  };
+/*---------------------
+ Testimonial carousel
+---------------------*/
+	
+    var review = $('.testimonial-carousel');
+    review.owlCarousel({
+		loop:true,
+		nav:false,
+        margin:30,
+		dots:true,
+		center:true,
+		autoplay:false,
+		responsive:{
+			0:{
+				items:1
+			},
+			768:{
+				items:2
+			},
+			1000:{
+				items:3
+			}
+		}
+	});
+    
+/*--------------------------
+     Payments carousel
+---------------------------- */
+	var payment_carousel = $('.payment-carousel');
+	payment_carousel.owlCarousel({
+        loop:true,
+        nav:false,		
+        autoplay:false,
+        margin:30,
+        dots:false,
+        responsive:{
+            0:{
+                items:2
+            },
+            700:{
+                items:4
+            },
+            1000:{
+                items:6
+            }
+        }
+    });
+    
 
-  // counter init
-  $('.counter').counterUp({
-    delay: 50,
-    time: 2500
-  });
-
-  // wow js init
-  new WOW().init();
-
-  // countdown time setup
-  $('#remainTime1').countdown('2020/08/10', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  $('#remainTime2').countdown('2020/07/25', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  $('#remainTime3').countdown('2020/09/10', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  $('#remainTime4').countdown('2020/08/10', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  $('#remainTime5').countdown('2020/09/01', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  $('#remainTime6').countdown('2020/08/29', function(event) {
-    $(this).html(event.strftime('%D days %H:%M:%S'));
-  });
-
-  // color version change
-  $('.template-version button').on('click', function(){
-    $('.template-version').toggleClass('open');
-  });
-
-  // testimonial-slider js
-  $('.testimonial-slider').owlCarousel({
-    loop:true,
-    margin: 30,
-    smartSpeed: 800,
-    dots: false,
-    dots: false,
-    autoplay: true,
-    responsiveClass:true,
-    responsive:{
-      0:{
-        items: 1
-      },
-      576:{
-        items: 2
-      },
-      992:{
-        items:3
-      }
-    }
-  });
-
-  // Boxes js
-  $('.boxes').owlCarousel({
-    loop:true,
-    margin: 30,
-    smartSpeed: 800,
-    dots: false,
-    dots: false,
-    autoplay: true,
-    responsiveClass:true,
-    responsive:{
-      0:{
-        items: 1
-      },
-      576:{
-        items: 2
-      },
-      992:{
-        items:3
-      }
-    }
-  });
+/*----------------------------
+    Contact form
+------------------------------ */
+	$("#contactForm").on("submit", function (event) {
+		if (event.isDefaultPrevented()) {
+			formError();
+			submitMSG(false, "Did you fill in the form properly?");
+		} else {
+			event.preventDefault();
+			submitForm();
+		}
+	});
+	function submitForm(){
+		var name = $("#name").val();
+		var email = $("#email").val();
+		var msg_subject = $("#msg_subject").val();
+		var message = $("#message").val();
 
 
+		$.ajax({
+			type: "POST",
+			url: "assets/contact.php",
+			data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&message=" + message,
+			success : function(text){
+				if (text === "success"){
+					formSuccess();
+				} else {
+					formError();
+					submitMSG(false,text);
+				}
+			}
+		});
+	}
+
+	function formSuccess(){
+		$("#contactForm")[0].reset();
+		submitMSG(true, "Message Submitted!")
+	}
+
+	function formError(){
+		$("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+			$(this).removeClass();
+		});
+	}
+
+	function submitMSG(valid, msg){
+		if(valid){
+			var msgClasses = "h3 text-center tada animated text-success";
+		} else {
+			var msgClasses = "h3 text-center text-danger";
+		}
+		$("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
+	}
+    
 
 
-
-
-  // Show or hide the sticky footer button
-  $(window).on("scroll", function() {
-    if ($(this).scrollTop() > 200) {
-        $(".scroll-to-top").fadeIn(200);
-    } else {
-        $(".scroll-to-top").fadeOut(200);
-    }
-  });
-
-  // Animate the scroll to top
-  $(".scroll-to-top").on("click", function(event) {
-    event.preventDefault();
-    $("html, body").animate({scrollTop: 0}, 300);
-  });
-
-
-})(jQuery);
+})(jQuery); 

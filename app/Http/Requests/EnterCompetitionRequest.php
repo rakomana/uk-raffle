@@ -24,10 +24,8 @@ class EnterCompetitionRequest extends FormRequest
     public function rules()
     {
         return [
-            'quantity' => 'required|string',
+            'quantity' => 'required',
             'product_id' => 'required|string|exists:products,id',
-            'option' => 'required|string',
-            'total_amount' => 'required|string',
             //alter the tickets sold and remaining
             //user must not be able to take tickets more than allowed per user
             //link user with the option

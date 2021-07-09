@@ -26,6 +26,8 @@ class CreateUserProductTable extends Migration
                     ->references('id')
                     ->on('products')
                     ->onDelete('cascade');
+            $table->string('status')->default('Nil');
+            $table->integer('order_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

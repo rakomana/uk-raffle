@@ -1,22 +1,45 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('content')
-      <!-- hero-section start -->
-  <section class="hero-section bg_img" data-background="{{asset('images/2.jpg')}}">    
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <div class="hero-content">
-            <h4 class="sub-title">404</h4>
-            <p>OOPS! WE COULD NOT FIND THE PAGE YOU REQUESTED</p>
-            <div class="btn-area">
-              <a href="{{url('welcome')}}" class="cmn-btn">GO HOME</a>
+        <!-- Start Bottom Header -->
+        <div class="page-area">
+            <div class="breadcumb-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcrumb text-center">
+                            <div class="section-headline text-center">
+                                <h3>Error</h3>
+                            </div>
+                            <ul>
+                                <li class="home-bread">Home</li>
+                                <li>Error</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- hero-section end -->
-
-@endsection
+        <!-- END Header -->
+        <div class="page-head area-padding">
+			<div class="container">
+				<div class="row">
+				    <div class="col-md-12 col-sm-12 col-xs-12">
+				        <div class="row">
+		                    <div class="error-page">
+								<!-- map area -->
+								<div class="col-md-12 col-sm-12 col-xs-12">
+								    <div class="error-main-text text-center">
+								        <h2 class="error-easy-text">Page Not Found</h2>
+								    	<h1 class="high-text">4<span class="color">0</span>4</h1>
+								    	<h4 class="error-bot">Oops, the page you are looking for does not exit.</h4>
+								    	<a class="error-btn" href="{{url('/')}}">Back Homepage</a>
+								    </div>
+								</div>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+        @endsection

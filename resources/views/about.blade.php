@@ -1,112 +1,62 @@
 ﻿@extends('layouts.app')
 
 @section('content')
-
-  <!-- inner-hero-section start -->
-  <section class="inner-hero-section bg_img" data-background="{{asset('images/bg-img/inner-hero.jpg')}}">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="page-title">About Us</h2>
-          <ol class="breadcum d-flex">
-            <li><a href="{{url('/')}}">Home</a></li>
-            <li>about us</li>
-          </ol>
+        <!-- Start Bottom Header -->
+        <div class="page-area">
+            <div class="breadcumb-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="breadcrumb text-center">
+                            <div class="section-headline text-center">
+                                <h3>About us</h3>
+                            </div>
+                            <ul>
+                                <li class="home-bread">Home</li>
+                                <li>About us</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- inner-hero-section end -->
-
-  <!-- about-section start -->
-  <section class="about-section pt-120 pb-120 section-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-6 order-xl-1 order-2">
-          <div class="about-content">
-            <div class="section-header">
-              <h2 class="section-title">Story about us</h2>
+        <!-- END Header -->
+        <!-- Start About Area -->
+        <div class="about-area about-area-3 fix area-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="about-video">
+                            <img src="img\about\ab.jpg" alt="">
+                            <div class="video-content">
+                                <a href="https://www.youtube.com/watch?v=O33uuBh6nXA" class="video-play vid-zone">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="about-content">
+                            <div class="section-headline">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis consectetur saepe quaerat incidunt cupiditate, inventore soluta. Sapiente in, aliquid corporis tenetur quidem veniam modi assumenda eius tempora cumque officiis est quis voluptates necessitatibus eos quaerat, neque, adipisci debitis. In ducimus accusamus sapiente sequi voluptate saepe tenetur, iusto consequatur a quo fugit ipsa nobis assumenda impedit delectus distinctio eligendi perferendis nesciunt.</p>
+                            </div>
+                            <div class="about-company">
+                                <div class="single-about">
+									<span class="about-text">Professional team</span>
+									<span class="about-text">Server secure payments</span>
+									<span class="about-text">Live hat upport</span>
+                                </div>
+                                <div class="single-about">
+									<span class="about-text">Goal achivment</span>
+									<span class="about-text">Worldwide services company</span>
+									<span class="about-text">Marketing expert policy</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
-            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil accusamus distinctio maiores, error voluptates ipsam quae, delectus debitis est cupiditate recusandae odit consectetur in natus rem voluptatibus ea minima quod!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea autem est blanditiis repellat sunt obcaecati nihil velit omnis assumenda ipsam vero consequuntur, ut pariatur distinctio iste rem totam temporibus ab?</p>
-            <ul class="cmn-list">
-              <li>EMAIL</li>
-              <li>TELEPHONE</li>
-              <li>CHAT</li>
-            </ul>
-          </div>
         </div>
-        <div class="col-xl-6 order-xl-2 order-1">
-          <div class="about-thumb">
-            <img src="{{asset('images/about.jpg')}}" alt="image">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- about-section end -->
-
-    <!-- testimonial-section start -->
-    <section class="testimonial-section pt-120 pb-120 section-bg">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="section-header text-center">
-            <h2 class="section-title">Users testimonial</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil, quisquam culpa sit quo sint facilis ipsa perspiciatis distinctio earum nesciunt animi, voluptatem possimus aut reprehenderit dolores consequuntur sapiente autem similique?</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-slider-area">
-        <div class="testimonial-slider owl-carousel">
-          <div class="testmonial-item">
-            <div class="content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit perspiciatis, ex ab hic accusantium delectus magni, ducimus laborum quas ullam facilis voluptas qui reiciendis in consequuntur quos quam sapiente distinctio.</p>
-            </div>
-            <div class="user-details">
-              <div class="thumb"><img src="{{asset('images/testimonial/1.png')}}" alt="images"></div>
-              <div class="details">
-                <h6 class="name">John Doe</h6>
-                <span class="designation">competition player</span>
-              </div>
-            </div>
-          </div><!-- testmonial-item end -->
-          <div class="testmonial-item">
-            <div class="content">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quae minima repellendus est, harum vel! Aut veniam odio et rem, voluptatem nobis deserunt similique eaque consectetur provident expedita a corrupti.</p>
-            </div>
-            <div class="user-details">
-              <div class="thumb"><img src="{{asset('images/testimonial/2.png')}}" alt="images"></div>
-              <div class="details">
-                <h6 class="name">Barlin Aria</h6>
-                <span class="designation">competition player</span>
-              </div>
-            </div>
-          </div><!-- testmonial-item end -->
-          <div class="testmonial-item">
-            <div class="content">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum deserunt hic molestias id enim nihil nobis nostrum explicabo. Nostrum obcaecati suscipit natus unde maxime commodi itaque excepturi incidunt distinctio rerum.</p>
-            </div>
-            <div class="user-details">
-              <div class="thumb"><img src="{{asset('images/testimonial/1.png')}}" alt="images"></div>
-              <div class="details">
-                <h6 class="name">John Doe</h6>
-                <span class="designation">competition player</span>
-              </div>
-            </div>
-          </div><!-- testmonial-item end -->
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- testimonial-section end -->
-
-   <!-- scroll-to-top start -->
- <div class="scroll-to-top">
-    <span class="scroll-icon">
-      <i class="fa fa-rocket"></i>
-    </span>
-  </div>
-  <!-- scroll-to-top end -->
-
-  @endsection
+        <!-- End About Area -->
+        @endsection

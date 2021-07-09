@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompetitionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/account/update', 'AccountController@updateAccount');
-Route::resource('/shipping', 'ShippingController');

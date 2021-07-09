@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CompetitionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +33,26 @@ Route::get('/play', function () {
 //authentication
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Auth::routes();
 
-Route::get('/welcome', 'HomeController@index');
 Route::get('/', 'ProductController@index');
+Route::post('contact', [ContactController::class, 'store']);
 Route::get('/active', 'ProductController@getActiveProducts');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/product/{id}', 'ProductController@show');
+    Route::get('/product/{id}', 'ProductController@show');    
 
-    Route::get('/account', 'AccountController@showUserData');
-    Route::post('/account/update', 'AccountController@updateAccount');
+    Route::post('/account', 'AccountController@store');
+    Route::post('/account/{account}', 'AccountController@update');
 
     Route::post('/address', 'ShippingController@store');
+    Route::get('success/{uuid}', [PaypalController::class, 'indexSuccess']);
+    Route::get('cancel', [PaypalController::class, 'indexCancel']);
 
-    Route::post('/competition', 'CompetitionController@userEnterCompetition');
+    Route::post('cart', [CompetitionController::class, 'userEnterCompetition']);
+    Route::get('cart', [CartController::class, 'index']);
+    Route::get('checkout', [CartController::class, 'accountInformation']);
 });
 
 Route::group(['prefix' => 'admin'], function () {

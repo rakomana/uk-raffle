@@ -17,24 +17,23 @@ class CompetitionController extends Controller
     private $db;
 
     /**
-    *   Inject models into the constructor
-    * 
-    * @params User $user
-    * @params Product $product
-    * @params DB $db
-    *
-    */
+     *   Inject models into the constructor
+     * 
+     * @params User $user
+     * @params Product $product
+     * @params DB $db
+     *
+     */
     public function __construct(
         User $user,
         Product $product,
         DB $db
-    )
-    {
+    ) {
         $this->user = $user;
         $this->product = $product;
         $this->db = $db;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,21 +45,16 @@ class CompetitionController extends Controller
 
         $user = $request->user();
 
-        if($user->product->contains($request->product_id))
-        {
-            return redirect()->back()->with('success', ' you already Entered the competition');
+        if ($user->product->contains($request->product_id)) {
+            throw new \ErrorException('you already Entered the competition');
         }
 
         // user enter competition on a specific item
         $user->product()->attach($request->product_id, ['quantity' => $request->quantity]);
 
-        // user 's lucky answer
-        $option = Option::where('option', $request->option)->firstOrFail();
-        $user->option()->attach($option);
-
         $this->db->commit();
 
-        return redirect()->back()->with('success', 'Entered competition successfully');
+        return response()->json(['success' => true, 'message', 'Entered competition successfully']);
     }
 
     /**
@@ -68,9 +62,9 @@ class CompetitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index(Request $request)
     {
-        //
+
     }
 
     /**

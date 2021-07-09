@@ -1,115 +1,105 @@
-@extends('layouts.app')
+<!doctype html>
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="author" content="Prince Rakomana">
+        <title>UK giveaways</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-<style>
-    html,body{
-background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
-}
+		<!-- favicon -->		
+		<link rel="shortcut icon" type="image/x-icon" href="img\logo\favicon.ico">
 
-.container{
-height: 100%;
-align-content: center;
-}
+		<!-- all css here -->
 
-.card{
-height: 560px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(0,0,0,0.5) !important;
-}
+		<!-- bootstrap v3.3.6 css -->
+		<link rel="stylesheet" href="css\bootstrap.min.css">
+		<!-- font-awesome css -->
+		<link rel="stylesheet" href="css\font-awesome.min.css">
+		<!-- style css -->
+		<link rel="stylesheet" href="style.css">
+		<!-- responsive css -->
+		<link rel="stylesheet" href="css\responsive.css">
 
-.social_icon span{
-font-size: 60px;
-margin-left: 10px;
-color: #FFC312;
-}
+		<!-- modernizr css -->
+		<script src="js\vendor\modernizr-2.8.3.min.js"></script>
+	</head>
+		<body data-spy="scroll" data-target="#navbar-example">
 
-.social_icon span:hover{
-color: white;
-cursor: pointer;
-}
+		<!--[if lt IE 8]>
+			<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
+		
 
-</style>
-<!-- contact-section start -->
-<section class="inner-hero-section bg_img" data-background="assets/images/bg-img/inner-hero.jpg">
-<div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
-			<div class="card-header"><h3>Signup</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<a href="{{url('login/facebook')}}"><span><i class="fab fa-facebook-square"></i></span></a>
-					<a href="{{url('login/google')}}"><span><i class="fab fa-google-plus-square"></i></span></a>
-					<a href="{{url('login/twitter')}}"><span><i class="fab fa-twitter-square"></i></span></a>
-				</div>
-			</div>
-			<div class="card-body">
+        <!-- Start Slider Area -->
+        <div class="login-area area-padding fix">
+            <div class="login-overlay"></div>
+            <div class="table">
+                <div class="table-cell">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-12">
+                                <div class="login-form signup-form">
+                                    <div class="text-center" style="margin-bottom: 10%">
+                                        <a href="{{url('/')}}"><img src="{{asset('img\logo\ukgiveawayslogo.PNG')}}" style="width: 50%; height: 50%;" alt=""></a>
+                                    </div>
+                                    <h4 class="login-title text-center">REGISTER</h4>
+                                    <div class="row">
+                                        <form method="POST" action="{{ route('login') }}">
+											@csrf
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required="" data-error="Please enter your name">
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="password" name="password" id="msg_subject" class="form-control" placeholder="Password" required="" data-error="Please enter your message subject">
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="password" name="password_confirmation" id="cmsg_subject" class="form-control" placeholder="Confirm Password" required="" data-error="Please enter your message subject">
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <div class="check-group flexbox">
+                                                    <label class="check-box">
+                                                        <input type="checkbox" class="check-box-input" checked="">
+                                                        <span class="remember-text">I agree terms & conditions</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <button type="submit" id="submit" class="slide-btn login-btn">Signup</button>
+                                                <div id="msgSubmit" class="h3 text-center hidden"></div> 
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                                <div class="clear"></div>
+                                                <div class="separetor text-center"><span>Or with signup</span></div>
+                                                <div class="sign-icon">
+                                                    <ul>
+                                                        <li><a class="facebook" href="{{url('login/facebook')}}"><i class="fa fa-facebook-square"></i>Facebook</a></li>
+                                                        <li><a class="google" href="{{url('login/google')}}"><i class="fa fa-google-plus-square"></i>google</a></li>
+                                                    </ul>
+                                                    <div class="acc-not">have an account?  <a href="{{route('login')}}">Login</a></div>
+                                                </div>
+                                            </div>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Slider Area -->
+		
+		<!-- all js here -->
 
-			<form method="POST" action="{{ route('register') }}">
-				@csrf
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="first name">
-						@error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
-						</div>
-						<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"" placeholder="email address">
-						@error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
-						@error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
-						</div>
-						<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
-						@error('confirm_password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-					</div>
-					<div class="form-group">
-						<input type="submit" value="Signup" class="btn float-right login_btn">
-					</div>
-				</form>
-
-			</div>
-			<div class="card-footer">
-                    <div class="flex justify-content-center" style="color: white;">
-					    Already have an account?<a href="{{Route('login')}}}">
-					    	<span style="color: white;">Sign In</span></a>
-                    </div>
-			</div>
-		</div>
-	</div>
-</div>
-  </section>
-  <!-- contact-section end -->
-@endsection
+		<!-- jquery latest version -->
+		<script src="js\vendor\jquery-1.12.4.min.js"></script>
+		<!-- bootstrap js -->
+		<script src="js\bootstrap.min.js"></script>
+		<!-- Form validator js -->
+		<script src="js\form-validator.min.js"></script>
+		<!-- plugins js -->
+		<script src="js\plugins.js"></script>
+	</body>
+</html>
