@@ -24,6 +24,11 @@ class header extends Component
      */
     public function render()
     {
+        if(!auth()->check())
+        {
+            $product = [];
+            return view('components.header', compact('product'));    
+        }
         $carts = auth()->user()->product;
 
         $product = $this->sortProduct->sort($carts);

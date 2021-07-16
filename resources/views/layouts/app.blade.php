@@ -38,7 +38,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 		<body>
-
         <div id="preloader"></div>
         <x-header/>
 
@@ -58,14 +57,28 @@
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1 col-sm-12">
                             <div class="subs-form">
-                  <form id="contactForm" method="POST" action="contact.php" class="contact-form">
-                    <input type="email" class="email form-control" id="email" placeholder="Email" required="" data-error="Please enter your email">
-                    <button type="submit" id="submit" class="add-btn">Subscribe</button>
-                  </form>  
+                                <form method="POST" action="{{url('subscription')}}">
+                                    @csrf
+
+                                    @if ($message = Session::get('subscription'))
+                                    <div class="alert alert-danger alert-block">
+                                        <button type="button" class="close" data-dismiss="alert">×</button>	
+                                            <strong>{{ $message }}</strong>
+                                    </div>
+                                    @endif
+
+                                    <input type="email" name="email" class="email form-control @error('email') is-invalid @enderror" id="email" placeholder="Email" data-error="Please enter your email" required="">
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <button type="submit" id="submit" class="add-btn">Subscribe</button>
+                                </form>  
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <!-- End Subscribe area -->
@@ -98,11 +111,6 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-google"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-pinterest"></i>
                                                 </a>
                                             </li>
                                             <li>

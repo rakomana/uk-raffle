@@ -2,14 +2,14 @@
 
 namespace App\Traits;
 
-class SortProduct{
+class PaidProduct{
     public function sort($carts)
     {
         $products = collect([]);
 
         foreach($carts as $item)
         {
-            if($item->pivot->status == 'Nil')
+            if($item->pivot->status == 'paid')
             {
                 $products[] = $item;
             }

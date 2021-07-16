@@ -21,7 +21,7 @@
                             @else
                               <li><a href="#"><img src="{{asset('img\icon\login.png')}}" alt="">{{ Auth::user()->name }}</a>
                                 <ul>
-                                  <li><a href="{{url('cart')}}">Orders</a></li><br>
+                                  <li><a href="{{url('orders')}}">Orders</a></li><br>
                                   <li><a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

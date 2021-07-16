@@ -36,6 +36,6 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        redirect()->back()->with('success', 'thanks, we will be in touch');
+        return redirect()->back()->with('success', 'thanks, we will be in touch');
     }
 }

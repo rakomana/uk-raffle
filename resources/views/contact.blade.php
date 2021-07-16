@@ -34,10 +34,11 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-form">
                             <div class="row">
-                                <form id="contactForm" method="POST" action="{{url('contact')}}" class="contact-form">
+
+                                <form method="POST" action="{{url('contact')}}">
                                     @csrf
 
-                                    @if ($message = Session::get('error'))
+                                    @if ($message = Session::get('success'))
                                     <div class="alert alert-danger alert-block">
                                         <button type="button" class="close" data-dismiss="alert">×</button>	
                                             <strong>{{ $message }}</strong>
@@ -50,16 +51,16 @@
                                     </div>
 
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="email" class="email form-control @error('email') is-invalid @enderror"" id="email" placeholder="Email" required="" data-error="Please enter your email">
+                                        <input type="email" name="email" class="email form-control @error('email') is-invalid @enderror"" id="email" placeholder="Email" required="" data-error="Please enter your email">
                                         <div class="help-block with-errors"></div>
                                     </div>
 
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required="" data-error="Please enter your message subject">
+                                        <input type="text" name="subject" id="msg_subject" class="form-control" placeholder="Subject" required="" data-error="Please enter your message subject">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <textarea id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea>
+                                        <textarea name="message" id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
@@ -67,7 +68,8 @@
                                         <div id="msgSubmit" class="h3 text-center hidden"></div> 
                                         <div class="clearfix"></div>
                                     </div>   
-                                </form>  
+                                </form>
+
                             </div>
                         </div>
                     </div>

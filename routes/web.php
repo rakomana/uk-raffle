@@ -1,10 +1,14 @@
 <?php
 
+use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CompetitionController;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +43,7 @@ Auth::routes();
 Route::get('/', 'ProductController@index');
 Route::post('contact', [ContactController::class, 'store']);
 Route::get('/active', 'ProductController@getActiveProducts');
+Route::post('subscription', [SubscriptionController::class, 'store']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/product/{id}', 'ProductController@show');    
@@ -52,9 +57,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('cart', [CompetitionController::class, 'userEnterCompetition']);
     Route::get('cart', [CartController::class, 'index']);
+    Route::get('orders', [OrderController::class, 'index']);
     Route::get('checkout', [CartController::class, 'accountInformation']);
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+Route::get('competition', [CompetitionController::class, 'index']);
+Route::get('competition-detail/{product}', [CompetitionController::class, 'show']);
+Route::post('random/{product}', [CompetitionController::class, 'getRandomWinner']);

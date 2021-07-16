@@ -13,7 +13,7 @@ class SumProduct{
         $sub_total = 0;
         if(empty($products))
         {
-            $products = [];
+            $products = collect([]);
         }
         
         foreach($products as $item)

@@ -23,11 +23,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->product->all();
+        $active = $this->product->all();
+        
         $count_active_products = 0;
+        $products = [];
 
         //Count active products for the competition by checking the dates
-        foreach($products as $product)
+        foreach($active as $product)
         {
             $closing_date = new Carbon($product->closing_date);
             $now = new Carbon();
@@ -35,10 +37,9 @@ class ProductController extends Controller
             if($closing_date->gte($now))
             {
                 $count_active_products++;
+                $products[] = $product;
 
             }
-
-
         }
         //$count_active_products = $closing_date;
         return view('welcome', compact('products', 'count_active_products'));

@@ -6,8 +6,12 @@ use App\User;
 use App\Option;
 use App\Product;
 use App\Competition;
+use App\Enums\Payment;
+use App\Traits\PaidProduct;
 use Illuminate\Http\Request;
+use App\Notifications\Competition\NotifyLoser;
 use App\Http\Requests\EnterCompetitionRequest;
+use App\Notifications\Competition\NotifyWinner;
 use Illuminate\Database\ConnectionInterface as DB;
 
 class CompetitionController extends Controller
@@ -15,23 +19,27 @@ class CompetitionController extends Controller
     private $user;
     private $product;
     private $db;
+    private $paidProduct;
 
     /**
      *   Inject models into the constructor
      * 
-     * @params User $user
-     * @params Product $product
-     * @params DB $db
+     * @param User $user
+     * @param Product $product
+     * @param DB $db
+     * @param PaidProduct $paidProduct 
      *
      */
     public function __construct(
         User $user,
         Product $product,
-        DB $db
+        DB $db,
+        PaidProduct $paidProduct
     ) {
         $this->user = $user;
         $this->product = $product;
         $this->db = $db;
+        $this->paidProduct = $paidProduct;
     }
 
     /**
@@ -62,9 +70,11 @@ class CompetitionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $product = $this->product->all();
 
+        return view('competition', compact('product'));
     }
 
     /**
@@ -73,9 +83,13 @@ class CompetitionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show(Product $product)
     {
-        //
+        $carts  = $product->users;
+
+        $competitors = $this->paidProduct->sort($carts);
+    
+        return view('competition-detail', compact('product', 'competitors'));
     }
 
     /**
@@ -84,42 +98,42 @@ class CompetitionController extends Controller
      * @param  \App\Competition  $competition
      * @return \Illuminate\Http\Response
      */
-    public function show(Competition $competition)
+    public function getRandomWinner(Product $product)
     {
-        //
-    }
+        $carts = $product->users;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Competition $competition)
-    {
-        //
-    }
+        //convert array to an object
+        $competitors = $this->paidProduct->sort($carts);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Competition $competition)
-    {
-        //
-    }
+        $winner_id = $competitors->random()->id;
+    
+        $winner = $this->user->findOrFail($winner_id);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Competition  $competition
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Competition $competition)
-    {
-        //
+        #update winner and notify via email
+        #update loosers and notify via email
+        foreach($competitors as $competitor)
+        {
+            if($competitor->id == $winner->id)
+            {
+                $competitor->pivot->status = Payment::Win;
+
+                $winner->notify(new NotifyWinner(
+                    $product
+                ));
+
+            }else {
+                $competitor->pivot->status = Payment::Lost;
+                //cron jobs
+            }
+            $competitor->pivot->save();
+        }
+        #track order
+
+        session()->put('winner'.$product->id, [
+            'winner_id' => $winner_id,
+            'winner_name' => $winner->name,
+        ]);
+    
+        return redirect()->back();
     }
 }

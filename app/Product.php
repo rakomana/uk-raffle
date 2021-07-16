@@ -14,7 +14,7 @@ class Product extends Model
 	*/
     public function users()
     {
-    	return $this->belongsToMany(User::class, 'user_products')
+    	return $this->belongsToMany(User::class, 'user_product')
                     ->withPivot('order_id', 'quantity', 'status')
     				->withTimestamps();
     }
