@@ -7,8 +7,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CompetitionController;
 use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +68,17 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-
+Route::get('clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    
+    echo 'cleared';
+});
+Route::get('destroy/{account}', [AccountController::class, 'destroy']);
 Route::get('competition', [CompetitionController::class, 'index']);
 Route::get('competition-detail/{product}', [CompetitionController::class, 'show']);
 Route::post('random/{product}', [CompetitionController::class, 'getRandomWinner']);
+
+Route::post('send-email/{user}', [DeliveryController::class, 'notifyUserWithDelivery']);

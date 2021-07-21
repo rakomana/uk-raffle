@@ -9,7 +9,6 @@
                 <div class="col-md-8 col-md-offset-2">
                     <h2 style="text-align: center;">
                         Review Your Order & Complete Checkout
-
                     </h2>
                     <hr/>
                     <a href="{{('/')}}" class="btn btn-info" style="width: 100%;">Enter More Competitions</a>
@@ -20,9 +19,19 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Review
-                                                Your Order</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                Review Your Order
+                                            </a>
+                                            
                                         </h4>
+
+                                        @if ($message = Session::get('success'))
+                                        <div class="alert alert-danger alert-block">
+                                            <button type="button" class="close" data-dismiss="alert">×</button>	
+                                                <strong>{{ $message }}</strong>
+                                        </div>
+                                        @endif
+
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
@@ -106,7 +115,7 @@
                                                         <td>{{$user->city}}</td>
                                                         <td>{{$user->state}}</td>
                                                         <td>{{$user->post_code}}</td>
-                                                        <td><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></td>
+                                                        <td><a href="{{url('destroy/'.$user->id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                                     </tr>
                                                     @endforeach
                                                 </table>   

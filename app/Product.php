@@ -15,7 +15,7 @@ class Product extends Model
     public function users()
     {
     	return $this->belongsToMany(User::class, 'user_product')
-                    ->withPivot('order_id', 'quantity', 'status')
+                    ->withPivot('order_id', 'quantity', 'status', 'track')
     				->withTimestamps();
     }
 

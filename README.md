@@ -77,3 +77,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Tasks
+
+If cart is unattended for 5 hours notify them through email
+Add uui to the tables
+Pay failed orders

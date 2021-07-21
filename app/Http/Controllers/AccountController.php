@@ -69,4 +69,17 @@ class AccountController extends Controller
             'message' => 'user account saved succesfully'
         ]);
     }
+
+    /**
+     * destroy a resource
+     * 
+     * @param Account $account
+     * @return View
+    */
+    public function destroy(Account $account)
+    {
+        $account->delete();
+
+        return redirect()->back()->with('success', 'Billing Information Deleted');
+    }
 }

@@ -12,6 +12,7 @@
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Status</th>
+                            <th scope="col">Track</th>
                             <th scope="col">Product</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
@@ -23,6 +24,7 @@
                         <tr>
                             <td><img src="{{ Voyager::image( $product->image ) }}" style="width: 50px; height: 50px;" /> </td>
                             <td>{{$product->pivot->status}}</td>
+                            <td>{{$product->pivot->track}}</td>
                             <td>{{$product->name}}</td>
                             <td><input class="form-control" type="text" value="{{$product->pivot->quantity}}" disabled/></td>
                             <td class="text-right">£{{$product->entry_price}}.00</td>
@@ -36,7 +38,7 @@
                 </div>
             </div>
             @else
-                <h2 style="text-align: center;"><a href="{{url('/')}}" class="btn btn-success">Nothing in Cart, enter more Competitions</a></h2>
+                <h2 style="text-align: center;"><a href="{{url('/')}}" class="btn btn-success">You have no orders!, see the Competitions/Cart</a></h2>
             @endif
         </div>
     </div>

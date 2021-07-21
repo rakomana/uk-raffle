@@ -3,6 +3,14 @@
     $add  = is_null($dataTypeContent->getKey());
 @endphp
 
+<?php
+    $order = DB::table('user_product')->whereId($dataTypeContent->getKey())->first();
+    $product =DB::table('products')->whereId($order->product_id)->first();
+    $user = DB::table('users')->whereId($order->user_id)->first();
+    $address = DB::table('accounts')->whereUserId($user->id)->first();
+    $user_id = $user->id;
+?>
+
 @extends('voyager::master')
 
 @section('css')
@@ -140,6 +148,13 @@
 
 @section('javascript')
     <script>
+        $('.save').on('click', function(){
+            $.post('{{ url('send-email/'.$user_id.'') }}', function (response) {
+                    
+            });
+        });
+    </script>
+    <script>
         var params = {};
         var $file;
 
@@ -208,6 +223,7 @@
 
                 $('#confirm_delete_modal').modal('hide');
             });
+
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>

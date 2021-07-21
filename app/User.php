@@ -57,7 +57,7 @@ class User extends \TCG\Voyager\Models\User
     public function product()
     {
         return $this->belongsToMany(Product::class, 'user_product')
-                    ->withPivot('order_id', 'quantity', 'status')
+                    ->withPivot('order_id', 'quantity', 'status', 'track')
                     ->withTimestamps();
     }
 
