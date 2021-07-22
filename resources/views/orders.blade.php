@@ -13,6 +13,7 @@
                             <th scope="col"> </th>
                             <th scope="col">Status</th>
                             <th scope="col">Track</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Product</th>
                             <th scope="col" class="text-center">Quantity</th>
                             <th scope="col" class="text-right">Price</th>
@@ -25,8 +26,16 @@
                             <td><img src="{{ Voyager::image( $product->image ) }}" style="width: 50px; height: 50px;" /> </td>
                             <td>{{$product->pivot->status}}</td>
                             <td>{{$product->pivot->track}}</td>
+                            <td>
+                                <?php
+                                    $address = DB::table('accounts')->whereUserId(auth()->user()->id)->first();
+                                ?>
+                                <small>{{$address->address}}</small><br>
+                                <small>{{$address->unit}}, {{$address->city}}</small>
+                                <small>{{$address->state}}, {{$address->post_code}}</small>
+                            </td>
                             <td>{{$product->name}}</td>
-                            <td><input class="form-control" type="text" value="{{$product->pivot->quantity}}" disabled/></td>
+                            <td>{{$product->pivot->quantity}}</td>
                             <td class="text-right">£{{$product->entry_price}}.00</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
