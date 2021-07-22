@@ -37,7 +37,9 @@
                             <td>{{$product->name}}</td>
                             <td>{{$product->pivot->quantity}}</td>
                             <td class="text-right">£{{$product->entry_price}}.00</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            @if($product->pivot->status == 'failed')
+                            <td class="text-right"><a href="{{url('update/order')}}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> </a> </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
