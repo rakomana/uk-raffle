@@ -81,4 +81,17 @@ class CartController extends Controller
 
         return view('checkout', compact('account', 'product', 'total', 'order_num'));
     }
+
+    /**
+     * 
+     * 
+    */
+    public function proccesFailedOrders(Request $request)
+    {
+        $cart = $request->user()->product;
+
+        $this->updateOrder->process($cart);
+
+        return redirect()->back();
+    }
 }

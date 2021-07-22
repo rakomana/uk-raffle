@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post('cart', [CompetitionController::class, 'userEnterCompetition']);
     Route::get('cart', [CartController::class, 'index']);
     Route::get('orders', [OrderController::class, 'index']);
-    Route::get('checkout', [CartController::class, 'accountInformation']);
+    Route::get('checkout', [CartController::class, 'accountInformation'])->name('checkout');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -80,5 +80,6 @@ Route::get('destroy/{account}', [AccountController::class, 'destroy']);
 Route::get('competition', [CompetitionController::class, 'index']);
 Route::get('competition-detail/{product}', [CompetitionController::class, 'show']);
 Route::post('random/{product}', [CompetitionController::class, 'getRandomWinner']);
+Route::get('update/order', [CartController::class, 'proccesFailedOrders']);
 
 Route::post('send-email/{user}', [DeliveryController::class, 'notifyUserWithDelivery']);
