@@ -60,7 +60,7 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <textarea name="message" id="message" rows="7" placeholder="Massage" class="form-control" required="" data-error="Write your message"></textarea>
+                                        <textarea name="message" id="message" rows="7" placeholder="Message" class="form-control" required="" data-error="Write your message"></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">

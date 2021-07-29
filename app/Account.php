@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    use UUID;
+    
     /**
      * 
      * @return belongsTo

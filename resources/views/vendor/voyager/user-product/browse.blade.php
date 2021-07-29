@@ -126,8 +126,13 @@
                                         <td>
                                             <?php
                                                 $item = DB::table('products')->whereId($data->product_id)->first();
+                                                $count = 0;
                                             ?>
-                                            <img src="{{ Voyager::image($item->image) }}" style="width:60px">
+                                            @foreach(json_decode($item->image, true) as $image)
+                                                <?php if($count == 1) break; ?>
+                                                    <img src="{{ Voyager::image($image) }}" style="width:60px">
+                                                <?php $count++; ?>
+                                            @endforeach
                                             {{$item->name}}<br><small>£{{$item->entry_price}} | Quantity: {{$item->quantity}} | {{$item->availability}}</small>
                                         </td>
                                         <th>

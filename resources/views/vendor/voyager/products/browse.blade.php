@@ -205,7 +205,7 @@
                                                 @elseif($row->type == 'multiple_images')
                                                     @php $images = json_decode($data->{$row->field}); @endphp
                                                     @if($images)
-                                                        @php $images = array_slice($images, 0, 3); @endphp
+                                                        @php $images = array_slice($images, 0, 1); @endphp
                                                         @foreach($images as $image)
                                                             <img src="@if( !filter_var($image, FILTER_VALIDATE_URL)){{ Voyager::image( $image ) }}@else{{ $image }}@endif" style="width:50px">
                                                         @endforeach
@@ -220,12 +220,12 @@
                                                     @endphp
                                                     @if ($files)
                                                         @if (property_exists($row->details, 'show_as_images') && $row->details->show_as_images)
-                                                            @foreach (array_slice($files, 0, 3) as $file)
+                                                            @foreach (array_slice($files, 0, 1) as $file)
                                                             <img src="@if( !filter_var($file, FILTER_VALIDATE_URL)){{ Voyager::image( $file ) }}@else{{ $file }}@endif" style="width:50px">
                                                             @endforeach
                                                         @else
                                                             <ul>
-                                                            @foreach (array_slice($files, 0, 3) as $file)
+                                                            @foreach (array_slice($files, 0, 1) as $file)
                                                                 <li>{{ $file }}</li>
                                                             @endforeach
                                                             </ul>

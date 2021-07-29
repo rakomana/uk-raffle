@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use UUID;
+    
 	/**
 	*
 	* Get user associated with the product

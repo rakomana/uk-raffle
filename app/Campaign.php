@@ -2,11 +2,10 @@
 
 namespace App;
 
-use App\Traits\UUID;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Subscription extends Model
+class Campaign extends Model
 {
-    use UUID, Notifiable;
+    use Notifiable;
 }

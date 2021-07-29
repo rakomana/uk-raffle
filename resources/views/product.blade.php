@@ -8,7 +8,12 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-image">
 							@foreach($product as $product)
-								<img src="{{asset('storage/'.$product->image)}}" alt="product">
+								<?php $count = 0; ?>
+								@foreach(json_decode($product->image, true) as $image)
+									<?php if($count == 1) break; ?>
+									<a href="{{asset(Voyager::image($image))}}"><img src="{{ Voyager::image($image) }}" /></a>
+									<?php $count++; ?>
+								@endforeach
 							@endforeach
                         </div>
                     </div>
@@ -39,6 +44,19 @@
 						</div>
                     </div>
                     <!-- End contact Form -->
+					
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+						@foreach(json_decode($product->image, true) as $image)
+							<div class="col-md-4 col-sm-6 col-xs-12" >
+								<div style="padding-top: 150px;" class="ticket-image">
+									<a href="{{asset(Voyager::image($image))}}"><img src="{{ Voyager::image($image) }}" />	</a>
+								</div>
+							</div>
+						@endforeach
+						</div>
+					</div>
+
                 </div>
             </div>
         </div>

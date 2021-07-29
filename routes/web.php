@@ -83,3 +83,5 @@ Route::post('random/{product}', [CompetitionController::class, 'getRandomWinner'
 Route::get('update/order', [CartController::class, 'proccesFailedOrders']);
 
 Route::post('send-email/{user}', [DeliveryController::class, 'notifyUserWithDelivery']);
+Route::post('send/subscription', [SubscriptionController::class, 'sendSubcriptionEmails']);
+Route::get('unsubscribe', [SubscriptionController::class, 'destroy']);

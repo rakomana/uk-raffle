@@ -1,30 +1,31 @@
 <?php
 
-namespace App\Notifications\Competition;
+namespace App\Notifications\Subscription;
 
-use App\Product;
+use App\Campaign;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NotifyWinner extends Notification implements ShouldQueue
+class Message extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
-     * @var $product
+     * @var $message
     */
-    public $product;
+    public $campaign;
 
     /**
      * Create a new notification instance.
-     * @param Product $product
+     * @param Campaign $campaign
+     *
      * @return void
      */
-    public function __construct(Product $product)
+    public function __construct(Campaign $campaign)
     {
-        $this->product = $product;
+        $this->campaign = $campaign;
     }
 
     /**
@@ -49,8 +50,9 @@ class NotifyWinner extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject("Competition")
             ->greeting("Hi {$notifiable->name} ,")
-            ->line("Congratulations you have won {$this->product->name}, ")
-            ->action('Track order', url('http://127.0.0.1:8000/'));
+            ->line("{$this->campaign->message}, ")
+            ->action('Competitions', url('http://127.0.0.1:8000/'))
+            ->action('Unsubscribe', url('http://127.0.0.1:8000/unsubscribe'));
     }
 
     /**

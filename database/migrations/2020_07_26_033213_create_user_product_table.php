@@ -21,7 +21,7 @@ class CreateUserProductTable extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-            $table->integer('product_id')->unsigned()->nullable();
+            $table->uuid('product_id');
             $table->foreign('product_id')
                     ->references('id')
                     ->on('products')

@@ -21,7 +21,12 @@
                                 <span class="ticket-rate">£{{$product->entry_price}} per ticket</span>
                                 <div style="padding-top: 9px;" class="ticket-image">
                                     <span class="win-price">{{$product->name}}</span>
-                                    <img src="{{ Voyager::image( $product->image ) }}" alt="">
+                                    <?php $count = 0; ?>
+                                    @foreach(json_decode($product->image, true) as $image)
+                                        <?php if($count == 1) break; ?>
+                                        <img src="{{ Voyager::image($image) }}" />
+                                        <?php $count++; ?>
+                                    @endforeach
                                 </div>
                                 <div class="ticket-text">
                                     <h4 class="ticket-name">{{$product->no_of_tickets}}</span>/{{$product->quantity}} tickets remaining</h4>

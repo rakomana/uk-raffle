@@ -53,8 +53,12 @@
                     <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title center">{{$product->name}}</h3>
                         <div class="panel-body" style="padding-top:0;">
-                            <img class="img-responsive"
-                            src="{{ Voyager::image( $product->image ) }}">
+                            <?php $count = 0; ?>
+                            @foreach(json_decode($product->image, true) as $image)
+                            <?php if($count == 1) break; ?>
+                                <img class="img-responsive" src="{{ Voyager::image($image) }}" style="width:60px">
+                            <?php $count++; ?>
+                            @endforeach
                         </div>
                     </div>
                     <hr style="margin:0;">
