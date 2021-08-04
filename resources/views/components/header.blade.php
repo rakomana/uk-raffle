@@ -68,7 +68,7 @@
                                     <li><a class="pages" href="{{url('/')}}">Home</a>
                                     </li>
                                     <li><a class="pages" href="{{url('about')}}">About</a></li>
-                                    <li><a class="pages" href="#">Winners</a></li>
+                                    <li><a class="pages" href="{{url('winners')}}">Winners</a></li>
                                     <li><a class="pages" href="{{url('/')}}">Competitions</a></li>
                                     <li><a href="{{url('contact')}}">contacts</a></li>
                                     @guest

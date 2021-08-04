@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 	<style>
@@ -106,29 +106,29 @@
                 <div style="padding-top: 80px;" class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="contact-image">
-								<div class="slideshow-container">
-									<?php $count = 1; ?>
-									@foreach(json_decode($product->image, true) as $image)
-									<div class="mySlides">
-									  <div class="numbertext">{{$count}} / 3</div>
-										  <a href="{{asset(Voyager::image($image))}}"><img src="{{ Voyager::image($image) }}" style="width: 100%"/></a>
-									  <div class="text">{{$product->name}}</div>
-									</div>
-									<?php $count++; ?>
-									@endforeach
-									
-									
-									<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-									<a class="next" onclick="plusSlides(1)">&#10095;</a>
-									
-									</div>
-									<br>
-									
-									<div style="text-align:center">
-									  <span class="dot" onclick="currentSlide(1)"></span> 
-									  <span class="dot" onclick="currentSlide(2)"></span> 
-									  <span class="dot" onclick="currentSlide(3)"></span> 
-									</div>
+							<div class="slideshow-container">
+								<?php $count = 1; ?>
+								@foreach(json_decode($product->image, true) as $image)
+								<div class="mySlides">
+								  <div class="numbertext">{{$count}} / 3</div>
+									  <a href="{{asset(Voyager::image($image))}}"><img src="{{ Voyager::image($image) }}" style="width: 100%"/></a>
+								  <div class="text">{{$product->name}}</div>
+								</div>
+								<?php $count++; ?>
+								@endforeach
+								
+								
+								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1)">&#10095;</a>
+								
+								</div>
+								<br>
+								
+								<div style="text-align:center">
+								  <span class="dot" onclick="currentSlide(1)"></span> 
+								  <span class="dot" onclick="currentSlide(2)"></span> 
+								  <span class="dot" onclick="currentSlide(3)"></span> 
+								</div>
                         </div>
                     </div>
                     <!-- End contact icon -->
@@ -136,22 +136,13 @@
 						<div style="text-align: center;">
 							<h4>{{$product['name']}}</h4><hr>
 							<h6>Entry price: £{{$product['entry_price']}}</h6><hr>
-							<h6>{{$product->no_of_tickets}}</span>/{{$product->quantity}} tickets remaining</h6>
+							<h6>{{$product['description']}}</h6><hr>
+							<h2>Entry price: £{{$product['entry_price']}}</h2>
 							<hr>
-							<h4>Number of Entries</h4>
-							<div class="quantity buttons_added">
-								<input type="button" value="-" class="btn btn-success" @click.prevent="minus">
-								<input type="text"  title="Qty" class="input-text" v-model="form.quantity" size="4" disabled>
-								<input type="button" value="+" class="btn btn-success" @click.prevent="plus">
-							</div>
-							<h5 style="padding-top: 10px;">Total: <span>£</span>@{{totalAmount}}</h5>
 							<div style="padding-top: 10px;">
-								<button style="width: 100%;" class="btn btn-success" @click="cart"> 
-									<span v-if="loading">
-										<i class="fa fa-spinner fa-spin"></i> Adding...
-										</span>
-										<span v-else> Add to cart</span>
-									</button>
+								<button width="60%" class="btn btn-default" > 
+									Sold Out
+								</button>
 							</div>
 							<div style="padding-top: 10px;">
 								<button style="width: 100%;" class="btn btn-success">Closing date: {{$product->closing_date}}</button>
@@ -159,13 +150,13 @@
 						</div>
                     </div>
                     <!-- End contact Form -->
-					
 
                 </div>
             </div>
         </div>
 		<!-- End Contact Area -->
-		<script>
+
+			<script>
 			var slideIndex = 1;
 			showSlides(slideIndex);
 			
@@ -193,6 +184,8 @@
 			  dots[slideIndex-1].className += " active";
 			}
 			</script>
+			
+		
 		<!-- calculation -->
 		<script>
 			const App = new Vue({

@@ -58,12 +58,12 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //$product = $this->product->where('id', $id)->get()->load('questions');
-        $product = $this->product->where('id', $id)->get();
-        //$question = $this->question->where('product_id', $id)->get()->load('options');
-
+    public function show(Product $product)
+    { 
         return view('product', compact('product'));
+    }
+    public function showCompetition(Product $product)
+    {
+        return view('product-detail', compact('product'));
     }
 }

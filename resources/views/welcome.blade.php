@@ -19,7 +19,7 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="single-ticket">
                                 <span class="ticket-rate">£{{$product->entry_price}} per ticket</span>
-                                <div style="padding-top: 9px;" class="ticket-image">
+                                <div style="padding-top: 9px;">
                                     <span class="win-price">{{$product->name}}</span>
                                     <?php $count = 0; ?>
                                     @foreach(json_decode($product->image, true) as $image)

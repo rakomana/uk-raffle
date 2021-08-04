@@ -6,6 +6,7 @@ use App\User;
 use App\Option;
 use App\Product;
 use App\Competition;
+use App\UserProduct;
 use App\Enums\Payment;
 use App\Traits\PaidProduct;
 use Illuminate\Http\Request;
@@ -16,30 +17,32 @@ use Illuminate\Database\ConnectionInterface as DB;
 
 class CompetitionController extends Controller
 {
-    private $user;
-    private $product;
-    private $db;
     private $paidProduct;
+    private $product;
+    private $user;
+    private $db;
 
     /**
      *   Inject models into the constructor
      * 
+     * @param DB $db
      * @param User $user
      * @param Product $product
-     * @param DB $db
-     * @param PaidProduct $paidProduct 
-     *
+     * @param PaidProduct $paidProduct
+     * @param UserProduct $userProduct
      */
     public function __construct(
+        DB $db,
         User $user,
         Product $product,
-        DB $db,
-        PaidProduct $paidProduct
+        PaidProduct $paidProduct,
+        UserProduct $userProduct
     ) {
+        $this->db = $db;
         $this->user = $user;
         $this->product = $product;
-        $this->db = $db;
         $this->paidProduct = $paidProduct;
+        $this->userProduct = $userProduct;
     }
 
     /**
@@ -135,5 +138,16 @@ class CompetitionController extends Controller
         ]);
     
         return redirect()->back();
+    }
+
+    /**
+     * get winners
+     * @return view
+    */
+    public function indexWinners()
+    {
+        $competitions = $this->userProduct->all();
+        
+        return view('winners', compact('competitions'));
     }
 }

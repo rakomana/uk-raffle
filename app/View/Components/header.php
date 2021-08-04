@@ -24,9 +24,10 @@ class header extends Component
      */
     public function render()
     {
+        $product = collect();
+
         if(!auth()->check())
         {
-            $product = [];
             return view('components.header', compact('product'));    
         }
         $carts = auth()->user()->product;

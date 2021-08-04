@@ -47,14 +47,15 @@ Route::get('/', 'ProductController@index');
 Route::post('contact', [ContactController::class, 'store']);
 Route::get('/active', 'ProductController@getActiveProducts');
 Route::post('subscription', [SubscriptionController::class, 'store']);
+Route::get('winners', [CompetitionController::class, 'indexWinners']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/product/{id}', 'ProductController@show');    
+    Route::get('/product/{product}', 'ProductController@show');
+    Route::get('/competition/{product}', 'ProductController@showCompetition');  
 
     Route::post('/account', 'AccountController@store');
     Route::post('/account/{account}', 'AccountController@update');
 
-    Route::post('/address', 'ShippingController@store');
     Route::get('success/{uuid}', [PaypalController::class, 'indexSuccess']);
     Route::get('cancel', [PaypalController::class, 'indexCancel']);
 

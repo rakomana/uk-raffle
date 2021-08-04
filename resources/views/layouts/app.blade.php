@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="author" content="Prince Rakomana">
-    <title>UK giveaways</title>
+        <title>Rainbow Raffles | Home</title>
+        <meta name="title" title="Rainbow Raffles | Home">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- favicon -->		

@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="author" content="Prince Rakomana">
-        <title>UK giveaways</title>
+        <title>Rainbow Raffles | Register</title>
+        <meta name="title" title="Rainbow Raffles | Register">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- favicon -->		
@@ -13,16 +14,16 @@
 		<!-- all css here -->
 
 		<!-- bootstrap v3.3.6 css -->
-		<link rel="stylesheet" href="css\bootstrap.min.css">
+		<link rel="stylesheet" href="{{asset('css\bootstrap.min.css')}}">
 		<!-- font-awesome css -->
-		<link rel="stylesheet" href="css\font-awesome.min.css">
+		<link rel="stylesheet" href="{{asset('css\font-awesome.min.css')}}">
 		<!-- style css -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="{{asset('style.css')}}">
 		<!-- responsive css -->
-		<link rel="stylesheet" href="css\responsive.css">
+		<link rel="stylesheet" href="{{asset('css\responsive.css')}}">
 
 		<!-- modernizr css -->
-		<script src="js\vendor\modernizr-2.8.3.min.js"></script>
+		<script src="{{asset('js\vendor\modernizr-2.8.3.min.js')}}"></script>
 	</head>
 		<body data-spy="scroll" data-target="#navbar-example">
 
@@ -45,16 +46,43 @@
                                     </div>
                                     <h4 class="login-title text-center">REGISTER</h4>
                                     <div class="row">
-                                        <form method="POST" action="{{ route('login') }}">
+                                        <form method="POST" action="{{ route('register') }}">
 											@csrf
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email" required="" data-error="Please enter your name">
+                                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Full Name" required="">
+                                                @error('name')
+													<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="password" name="password" id="msg_subject" class="form-control" placeholder="Password" required="" data-error="Please enter your message subject">
+                                                <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Your Email" required="">
+                                                @error('email')
+													<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="password" name="password_confirmation" id="cmsg_subject" class="form-control" placeholder="Confirm Password" required="" data-error="Please enter your message subject">
+                                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password" required="" >
+                                                @error('password')
+													<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+
+                                            </div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password" required="">
+                                                @error('password_confirmation')
+													<span class="invalid-feedback" role="alert">
+														<strong>{{ $message }}</strong>
+													</span>
+												@enderror
+
                                             </div>
                                             <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                                                 <div class="check-group flexbox">
@@ -94,12 +122,12 @@
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="js\vendor\jquery-1.12.4.min.js"></script>
+		<script src="{{asset('js\vendor\jquery-1.12.4.min.js')}}"></script>
 		<!-- bootstrap js -->
-		<script src="js\bootstrap.min.js"></script>
+		<script src="{{asset('js\bootstrap.min.js')}}"></script>
 		<!-- Form validator js -->
-		<script src="js\form-validator.min.js"></script>
+		<script src="{{asset('js\form-validator.min.js')}}"></script>
 		<!-- plugins js -->
-		<script src="js\plugins.js"></script>
+		<script src="{{asset('js\plugins.js')}}"></script>
 	</body>
 </html>

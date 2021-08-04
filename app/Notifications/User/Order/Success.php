@@ -30,6 +30,7 @@ class Success extends Notification
     /**
      * Get the notification's delivery channels.
      *
+     * 
      * @param  mixed  $notifiable
      * @return array
      */

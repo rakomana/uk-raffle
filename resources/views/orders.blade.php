@@ -23,16 +23,27 @@
                     <tbody>
                         @foreach($product as $product)
                         <tr>
-                            <td><img src="{{ Voyager::image( $product->image ) }}" style="width: 50px; height: 50px;" /> </td>
+                            <td>
+                                <?php $count = 0; ?>
+                                @foreach(json_decode($product->image, true) as $image)
+                                <?php if($count == 1) break; ?>
+                                    <img class="img-responsive" src="{{ Voyager::image($image) }}" style="width:60px">
+                                <?php $count++; ?>
+                                @endforeach
+                            </td>
                             <td>{{$product->pivot->status}}</td>
                             <td>{{$product->pivot->track}}</td>
                             <td>
                                 <?php
                                     $address = DB::table('accounts')->whereUserId(auth()->user()->id)->first();
                                 ?>
-                                <small>{{$address->address}}</small><br>
-                                <small>{{$address->unit}}, {{$address->city}}</small>
-                                <small>{{$address->state}}, {{$address->post_code}}</small>
+                                @if($address !== null)
+                                    <small>{{$address->address}}</small><br>
+                                    <small>{{$address->unit}}, {{$address->city}}</small>
+                                    <small>{{$address->state}}, {{$address->post_code}}</small>
+                                @else
+                                    <small>no address</small>
+                                @endif
                             </td>
                             <td>{{$product->name}}</td>
                             <td>{{$product->pivot->quantity}}</td>

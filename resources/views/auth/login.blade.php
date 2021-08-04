@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="author" content="Prince Rakomana">
-    	<title>UK giveaways</title>
+        <title>Rainbow Raffles | Login</title>
+        <meta name="title" title="Rainbow Raffles | Login">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- favicon -->		
@@ -15,14 +16,14 @@
 		<!-- bootstrap v3.3.6 css -->
 		<link rel="stylesheet" href="{{asset('css\bootstrap.min.css')}}">
 		<!-- font-awesome css -->
-		<link rel="stylesheet" href="css\font-awesome.min.css">
+		<link rel="stylesheet" href="{{asset('css\font-awesome.min.css')}}">
 		<!-- style css -->
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="{{asset('style.css')}}">
 		<!-- responsive css -->
-		<link rel="stylesheet" href="css\responsive.css">
+		<link rel="stylesheet" href="{{asset('css\responsive.css')}}">
 
 		<!-- modernizr css -->
-		<script src="js\vendor\modernizr-2.8.3.min.js"></script>
+		<script src="{{asset('js\vendor\modernizr-2.8.3.min.js')}}"></script>
 	</head>
 		<body data-spy="scroll" data-target="#navbar-example">		
 
@@ -100,12 +101,12 @@
 		<!-- all js here -->
 
 		<!-- jquery latest version -->
-		<script src="js\vendor\jquery-1.12.4.min.js"></script>
+		<script src="{{asset('js\vendor\jquery-1.12.4.min.js')}}"></script>
 		<!-- bootstrap js -->
-		<script src="js\bootstrap.min.js"></script>
+		<script src="{{asset('js\bootstrap.min.js')}}"></script>
 		<!-- Form validator js -->
-		<script src="js\form-validator.min.js"></script>
+		<script src="{{asset('js\form-validator.min.js')}}"></script>
 		<!-- plugins js -->
-		<script src="js\plugins.js"></script>
+		<script src="{{asset('js\plugins.js')}}"></script>
 	</body>
 </html>
